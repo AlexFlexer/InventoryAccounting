@@ -8,4 +8,12 @@
   <string name="event_added">Добавлено</string>
   <string name="event_removed">Удалено</string>
   <string name="event_changed">Изменено (было/стало)</string>
+
+  <string name="hint_id">ИД товара</string>
+  <string name="hint_type">Тип товара (монитор, мышь…)</string>
+  <string name="hint_model">Модель</string>
+  <string name="hint_manufacturer">Производитель</string>
+  <string name="hint_amount">Количество</string>
+  <string name="button_save">Сохранить</string>
+  <string name="button_delete">Удалить</string>
 </resources>
