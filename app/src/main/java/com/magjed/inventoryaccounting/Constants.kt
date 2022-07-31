@@ -1,5 +1,5 @@
 /*
- * This file contains database-related constants, such as table
+ * This file contains app's constants, such as table
  * names, database names and so on.
  */
 package com.magjed.inventoryaccounting
