@@ -20,6 +20,7 @@
 
   <style name="EditTextDefault" parent="Widget.AppCompat.EditText">
     <item name="android:maxLines">1</item>
+    <item name="android:fontFamily">@font/product_sans</item>
     <item name="android:maxLength">500</item>
   </style>
 </resources>
