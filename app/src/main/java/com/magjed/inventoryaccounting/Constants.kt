@@ -10,5 +10,6 @@ const val TABLE_LOGS = "spy_log"
 //#endregion
 
 //#region database names
-const val DATABASE_INVENTORY_ACCOUNTING = "inv_acc"
+const val DATABASE_PRODUCTS = "inv_acc"
+const val DATABASE_LOGS = "logs"
 //#endregion
