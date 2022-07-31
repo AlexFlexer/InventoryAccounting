@@ -6,9 +6,14 @@
     <item name="colorAccent">@color/color_accent</item>
     <item name="android:windowBackground">@null</item>
     <item name="android:textViewStyle">@style/TextViewDefault</item>
+    <item name="recyclerViewStyle">@style/RecyclerViewDefault</item>
   </style>
 
   <style name="TextViewDefault" parent="Widget.AppCompat.TextView">
     <item name="android:fontFamily">@font/product_sans</item>
+  </style>
+
+  <style name="RecyclerViewDefault">
+    <item name="layoutManager">androidx.recyclerview.widget.LinearLayoutManager</item>
   </style>
 </resources>
