@@ -1,3 +1,11 @@
 <resources>
   <string name="app_name">Учет инвентаря</string>
+  <string name="screen_logs">Логи</string>
+  <string name="screen_scanner">Сканер товара</string>
+  <string name="screen_qr_generator">QR-код товара</string>
+  <string name="screen_details">Инфо товара</string>
+
+  <string name="event_added">Добавлено</string>
+  <string name="event_removed">Удалено</string>
+  <string name="event_changed">Изменено (было/стало)</string>
 </resources>
