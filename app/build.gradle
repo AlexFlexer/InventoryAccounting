@@ -49,6 +49,10 @@ dependencies {
     // QR-codes scanner library
     implementation 'com.github.yuriy-budiyev:code-scanner:2.3.2'
 
+    // QR-code generation
+    implementation 'androidmads.library.qrgenearator:QRGenearator:1.0.4'
+    implementation 'com.google.zxing:core:3.3.2'
+
     // Room database library
     def roomVersion = "2.4.3"
     implementation("androidx.room:room-runtime:$roomVersion")
