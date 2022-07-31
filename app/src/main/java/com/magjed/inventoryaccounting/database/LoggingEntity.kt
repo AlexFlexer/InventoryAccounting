@@ -1,5 +1,6 @@
 package com.magjed.inventoryaccounting.database
 
+import androidx.room.Dao
 import androidx.room.Embedded
 import androidx.room.PrimaryKey
 import androidx.room.Query
@@ -50,6 +51,7 @@ data class LoggingEntity(
  *
  * @author Alexander Dyachenko
  */
+@Dao
 interface LogDao {
 
   @Query("select * from $TABLE_LOGS")

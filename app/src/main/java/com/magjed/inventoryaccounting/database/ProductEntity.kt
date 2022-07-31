@@ -29,6 +29,7 @@ data class ProductEntity(
  *
  * @author Alexander Dyachenko
  */
+@Dao
 interface ProductsDao {
 
   @Query("select * from $TABLE_HW_ITEMS")
