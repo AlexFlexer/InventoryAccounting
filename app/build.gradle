@@ -64,4 +64,8 @@ dependencies {
 
     // library for easier work with ViewBinding
     implementation 'com.github.kirich1409:viewbindingpropertydelegate:1.5.6'
+
+    // Kotlin coroutines
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.1'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.0-alpha01'
 }
