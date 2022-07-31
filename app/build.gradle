@@ -8,6 +8,10 @@ android {
     namespace 'com.magjed.inventoryaccounting'
     compileSdk 32
 
+    buildFeatures {
+        viewBinding = true
+    }
+
     defaultConfig {
         applicationId "com.magjed.inventoryaccounting"
         minSdk 21
