@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:background="@color/white">
+
+  <com.google.android.material.appbar.AppBarLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    app:layout_behavior="com.google.android.material.appbar.AppBarLayout$Behavior">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:padding="10dp">
+
+      <TextView
+        android:id="@+id/txt_toolbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/screen_logs"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+  </com.google.android.material.appbar.AppBarLayout>
+
+  <androidx.recyclerview.widget.RecyclerView
+    android:id="@+id/recycler_logs"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipToPadding="false"
+    android:paddingStart="16dp"
+    android:paddingTop="16dp"
+    android:paddingEnd="16dp"
+    android:paddingBottom="16dp"
+    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+    app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+    tools:itemCount="100"
+    tools:listitem="@layout/item_log" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
