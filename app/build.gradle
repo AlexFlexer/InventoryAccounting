@@ -50,4 +50,7 @@ dependencies {
     implementation("androidx.room:room-runtime:$roomVersion")
     annotationProcessor("androidx.room:room-compiler:$roomVersion")
     kapt("androidx.room:room-compiler:$roomVersion")
+
+    // Gson library for (de)serializing JSON in Java objects
+    implementation 'com.google.code.gson:gson:2.9.0'
 }
