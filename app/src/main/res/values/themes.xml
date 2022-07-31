@@ -5,5 +5,10 @@
     <item name="colorPrimaryDark">@color/color_primary_dark</item>
     <item name="colorAccent">@color/color_accent</item>
     <item name="android:windowBackground">@null</item>
+    <item name="android:textViewStyle">@style/TextViewDefault</item>
+  </style>
+
+  <style name="TextViewDefault" parent="Widget.AppCompat.TextView">
+    <item name="android:fontFamily">@font/product_sans</item>
   </style>
 </resources>
