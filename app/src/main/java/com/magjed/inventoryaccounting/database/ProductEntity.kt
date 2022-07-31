@@ -1,6 +1,7 @@
 package com.magjed.inventoryaccounting.database
 
 import androidx.room.*
+import kotlinx.coroutines.flow.Flow
 
 /**
  * Represents a computer hardware item.
@@ -29,6 +30,26 @@ data class ProductEntity(
  * @author Alexander Dyachenko
  */
 interface ProductsDao {
+
+  @Query("select * from $TABLE_HW_ITEMS")
+  fun getProducts(): Flow<ProductEntity>
+
+  @Query(
+    "select * from $TABLE_HW_ITEMS where (id = :id or :id is null) and" +
+      "(type = :type or :type is null) and" +
+      "(model = :model or :model is null) and" +
+      "(manufacturer = :manufacturer or :manufacturer is null) and" +
+      "(location = :location or :location is null) and" +
+      "(amount = :amount or :amount is null)"
+  )
+  fun filter(
+    id: Int?,
+    type: String?,
+    model: String?,
+    manufacturer: String?,
+    location: String?,
+    amount: Int?
+  ): Flow<ProductEntity>
 
   @Insert(onConflict = OnConflictStrategy.REPLACE)
   fun addProduct(product: ProductEntity)
