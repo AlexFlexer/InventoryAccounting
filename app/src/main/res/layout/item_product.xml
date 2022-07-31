@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content"
+  android:layout_marginBottom="10dp"
+  app:cardCornerRadius="15dp"
+  app:cardElevation="10dp">
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="15dp">
+
+    <ImageView
+      android:id="@+id/btn_remove"
+      android:layout_width="40dp"
+      android:layout_height="40dp"
+      android:padding="5dp"
+      android:src="@drawable/ico_remove"
+      app:layout_constraintBottom_toBottomOf="@id/txt_id"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintTop_toTopOf="@id/txt_name_model"
+      app:tint="#D50000" />
+
+    <ImageView
+      android:id="@+id/btn_qr"
+      android:layout_width="40dp"
+      android:layout_height="40dp"
+      android:padding="5dp"
+      android:src="@drawable/ico_qr"
+      app:layout_constraintBottom_toBottomOf="@id/txt_id"
+      app:layout_constraintEnd_toStartOf="@id/btn_remove"
+      app:layout_constraintTop_toTopOf="@id/txt_name_model" />
+
+    <TextView
+      android:id="@+id/txt_name_model"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:textSize="25sp"
+      android:textStyle="bold"
+      app:layout_constraintEnd_toStartOf="@id/btn_qr"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      tools:text="Title" />
+
+    <TextView
+      android:id="@+id/txt_manufacturer"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      app:layout_constraintEnd_toStartOf="@id/btn_qr"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@id/txt_name_model"
+      tools:text="Subtitle" />
+
+    <TextView
+      android:id="@+id/txt_amount"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      app:layout_constraintEnd_toStartOf="@id/btn_qr"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@id/txt_manufacturer"
+      tools:text="Subtitle" />
+
+    <TextView
+      android:id="@+id/txt_id"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      app:layout_constraintEnd_toStartOf="@id/btn_qr"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@id/txt_amount"
+      tools:text="Subtitle" />
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>
