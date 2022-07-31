@@ -1,6 +1,7 @@
 package com.magjed.inventoryaccounting.database
 
 import androidx.room.*
+import com.magjed.inventoryaccounting.TABLE_HW_ITEMS
 import kotlinx.coroutines.flow.Flow
 
 /**

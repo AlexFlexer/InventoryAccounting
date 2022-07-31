@@ -2,7 +2,7 @@
  * This file contains database-related constants, such as table
  * names, database names and so on.
  */
-package com.magjed.inventoryaccounting.database
+package com.magjed.inventoryaccounting
 
 //#region table names
 const val TABLE_HW_ITEMS = "hardware_items"

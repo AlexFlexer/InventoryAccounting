@@ -4,6 +4,7 @@ import androidx.room.Dao
 import androidx.room.Embedded
 import androidx.room.PrimaryKey
 import androidx.room.Query
+import com.magjed.inventoryaccounting.TABLE_LOGS
 import kotlinx.coroutines.flow.Flow
 
 /**
