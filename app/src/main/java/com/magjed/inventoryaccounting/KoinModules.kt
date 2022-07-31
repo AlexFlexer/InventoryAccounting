@@ -3,6 +3,7 @@ package com.magjed.inventoryaccounting
 import com.google.gson.GsonBuilder
 import com.magjed.inventoryaccounting.database.HardwareItemsDatabase
 import com.magjed.inventoryaccounting.database.LogsDatabase
+import com.magjed.inventoryaccounting.utils.getOrCreateDatabase
 import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
 

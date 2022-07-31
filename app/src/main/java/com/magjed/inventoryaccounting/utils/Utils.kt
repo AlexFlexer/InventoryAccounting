@@ -1,4 +1,4 @@
-package com.magjed.inventoryaccounting
+package com.magjed.inventoryaccounting.utils
 
 import android.content.Context
 import androidx.room.Room
