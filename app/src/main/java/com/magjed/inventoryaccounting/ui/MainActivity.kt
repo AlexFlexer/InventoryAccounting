@@ -1,6 +1,8 @@
 package com.magjed.inventoryaccounting.ui
 
 import android.content.Intent
+import android.os.Bundle
+import androidx.annotation.DrawableRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -15,6 +17,7 @@ import com.magjed.inventoryaccounting.databinding.ActivityMainBinding
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainViewModel(
   private val mProductsDao: ProductsDao,
@@ -22,9 +25,9 @@ class MainViewModel(
 ) : ViewModel() {
 
   private val _mItems = MutableLiveData<List<ProductEntity>>()
-  private val mItems: LiveData<List<ProductEntity>> = _mItems
+  val mItems: LiveData<List<ProductEntity>> = _mItems
   private val _mFiltered = MutableLiveData(false)
-  private val mFiltered: LiveData<Boolean> = _mFiltered
+  val mFiltered: LiveData<Boolean> = _mFiltered
 
   fun loadItems() {
     viewModelScope.launch {
@@ -91,4 +94,38 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
   }
 
   private val mBinding: ActivityMainBinding by viewBinding()
+  private val mViewModel: MainViewModel by viewModel()
+
+  override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+    mBinding.btnFilter.setOnClickListener {
+      if (mViewModel.mFiltered.value == true) mViewModel.closeFilter()
+      else startFilterDialog()
+    }
+    mBinding.btnLogs.setOnClickListener {
+      startActivity(Intent(this, LogsActivity::class.java))
+    }
+    mBinding.btnCamera.setOnClickListener {
+      startScanner()
+    }
+    mBinding.btnPlus.setOnClickListener {
+      startAddItemDialog()
+    }
+    mViewModel.mFiltered.observe(this) {
+      @DrawableRes val imgRes = if (it) R.drawable.ico_close else R.drawable.ico_filter
+      mBinding.btnFilter.setImageResource(imgRes)
+    }
+  }
+
+  private fun startFilterDialog() {
+
+  }
+
+  private fun startAddItemDialog() {
+
+  }
+
+  private fun startScanner() {
+
+  }
 }
