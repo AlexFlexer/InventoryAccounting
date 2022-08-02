@@ -1,5 +1,6 @@
 package com.magjed.inventoryaccounting.database
 
+import androidx.annotation.Keep
 import androidx.room.*
 import com.magjed.inventoryaccounting.TABLE_HW_ITEMS
 import kotlinx.coroutines.flow.Flow
@@ -16,6 +17,7 @@ import kotlinx.coroutines.flow.Flow
  * @author Alexander Dyachenko
  */
 @Entity(tableName = TABLE_HW_ITEMS)
+@Keep
 data class ProductEntity(
   @PrimaryKey val id: String,
   val type: String,

@@ -1,5 +1,6 @@
 package com.magjed.inventoryaccounting.database
 
+import androidx.annotation.Keep
 import androidx.room.Dao
 import androidx.room.Embedded
 import androidx.room.PrimaryKey
@@ -39,6 +40,7 @@ enum class ModificationType {
  *
  * @author Alexander Dyachenko
  */
+@Keep
 data class LoggingEntity(
   @PrimaryKey(autoGenerate = true) val id: Int,
   val time: String,
