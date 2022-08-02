@@ -4,7 +4,9 @@ import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.magjed.inventoryaccounting.database.HardwareItemsDatabase
 import com.magjed.inventoryaccounting.database.LogsDatabase
+import com.magjed.inventoryaccounting.database.ProductsDao
 import com.magjed.inventoryaccounting.ui.ItemQrGenViewModel
+import com.magjed.inventoryaccounting.ui.MainViewModel
 import com.magjed.inventoryaccounting.utils.getOrCreateDatabase
 import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
@@ -23,4 +25,5 @@ val moduleGson = module {
 
 val moduleViewModels = module {
   ItemQrGenViewModel(get(Gson::class.java))
+  MainViewModel(get(ProductsDao::class.java), get(Gson::class.java))
 }
