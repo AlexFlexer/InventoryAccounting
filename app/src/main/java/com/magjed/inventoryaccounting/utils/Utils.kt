@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
+import android.widget.EditText
 import android.widget.Toast
 import androidx.annotation.StringRes
 import androidx.core.content.getSystemService
@@ -57,3 +58,10 @@ fun Fragment.toast(@StringRes textRes: Int) = activity?.toast(textRes)
  */
 val View.layoutInflater: LayoutInflater
   get() = this.context.getSystemService()!!
+
+/**
+ * Gets the text the user has entered in [this] EditText.
+ */
+fun EditText.getContent(): String {
+  return this.editableText.toString()
+}
