@@ -47,7 +47,7 @@ interface ProductsDao {
       "(amount = :amount or :amount is null)"
   )
   suspend fun filter(
-    id: Int?,
+    id: String?,
     type: String?,
     model: String?,
     manufacturer: String?,
