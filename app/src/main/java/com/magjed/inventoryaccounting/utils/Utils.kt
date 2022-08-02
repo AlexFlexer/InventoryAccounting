@@ -1,6 +1,10 @@
 package com.magjed.inventoryaccounting.utils
 
+import android.app.Activity
 import android.content.Context
+import android.widget.Toast
+import androidx.annotation.StringRes
+import androidx.fragment.app.Fragment
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
@@ -20,3 +24,27 @@ inline fun <reified D: RoomDatabase> Context.getOrCreateDatabase(
     .apply(customBuilderSetup)
     .build()
 }
+
+/**
+ * Shows the given [textRes] as toast message.
+ */
+fun Activity.toast(@StringRes textRes: Int) {
+  Toast.makeText(this, textRes, Toast.LENGTH_LONG)
+}
+
+/**
+ * Shows the given [text] as toast message.
+ */
+fun Activity.toast(text: CharSequence) {
+  Toast.makeText(this, text, Toast.LENGTH_LONG)
+}
+
+/**
+ * Shows the given [text] as toast message.
+ */
+fun Fragment.toast(text: CharSequence) = activity?.toast(text)
+
+/**
+ * Shows the given [textRes] as toast message.
+ */
+fun Fragment.toast(@StringRes textRes: Int) = activity?.toast(textRes)
