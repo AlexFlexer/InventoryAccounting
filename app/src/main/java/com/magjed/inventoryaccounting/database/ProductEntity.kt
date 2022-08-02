@@ -36,7 +36,7 @@ data class ProductEntity(
 interface ProductsDao {
 
   @Query("select * from $TABLE_HW_ITEMS")
-  fun getProducts(): Flow<List<ProductEntity>>
+  suspend fun getProducts(): Flow<List<ProductEntity>>
 
   @Query(
     "select * from $TABLE_HW_ITEMS where (id = :id or :id is null) and" +
@@ -46,7 +46,7 @@ interface ProductsDao {
       "(location = :location or :location is null) and" +
       "(amount = :amount or :amount is null)"
   )
-  fun filter(
+  suspend fun filter(
     id: Int?,
     type: String?,
     model: String?,
@@ -56,11 +56,11 @@ interface ProductsDao {
   ): Flow<List<ProductEntity>>
 
   @Insert(onConflict = OnConflictStrategy.REPLACE)
-  fun addProduct(product: ProductEntity)
+  suspend fun addProduct(product: ProductEntity)
 
   @Delete
-  fun removeProduct(product: ProductEntity)
+  suspend fun removeProduct(product: ProductEntity)
 
   @Query("delete from $TABLE_HW_ITEMS where id = :id")
-  fun removeProduct(id: String)
+  suspend fun removeProduct(id: String)
 }
