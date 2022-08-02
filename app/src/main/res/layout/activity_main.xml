@@ -17,6 +17,16 @@
       android:layout_height="wrap_content"
       android:padding="10dp">
 
+      <ImageView
+        android:id="@+id/btn_filter"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@drawable/ico_filter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
       <TextView
         android:id="@+id/txt_toolbar"
         android:layout_width="wrap_content"
