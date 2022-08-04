@@ -39,12 +39,14 @@ enum class ModificationType {
  */
 @Keep
 data class LoggingEntity(
-  @PrimaryKey(autoGenerate = true) val id: Int,
   val time: String,
   val type: ModificationType,
   @Embedded val oldProduct: ProductEntity?,
   @Embedded val newProduct: ProductEntity?
-)
+) {
+  @PrimaryKey(autoGenerate = true)
+  val id: Int = 0
+}
 
 /**
  * DAO for interacting with logs table.
