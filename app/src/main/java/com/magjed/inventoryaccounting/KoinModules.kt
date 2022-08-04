@@ -26,5 +26,5 @@ val moduleGson = module {
 
 val moduleViewModels = module {
   ItemQrGenViewModel(get(Gson::class.java))
-  MainViewModel(get(ProductsDao::class.java), get(LogDao::class.java))
+  MainViewModel(get(ProductsDao::class.java), get(Gson::class.java), get(LogDao::class.java))
 }
