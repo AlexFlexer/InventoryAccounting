@@ -57,7 +57,7 @@ data class LoggingEntity(
 interface LogDao {
 
   @Query("select * from $TABLE_LOGS")
-  suspend fun getAllLogs(): Flow<List<LoggingEntity>>
+  fun getAllLogs(): Flow<List<LoggingEntity>>
 
   @Query("delete from $TABLE_LOGS")
   suspend fun removeLogs()
