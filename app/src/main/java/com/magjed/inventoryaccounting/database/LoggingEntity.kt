@@ -1,10 +1,7 @@
 package com.magjed.inventoryaccounting.database
 
 import androidx.annotation.Keep
-import androidx.room.Dao
-import androidx.room.Embedded
-import androidx.room.PrimaryKey
-import androidx.room.Query
+import androidx.room.*
 import com.magjed.inventoryaccounting.TABLE_LOGS
 import kotlinx.coroutines.flow.Flow
 
@@ -62,4 +59,7 @@ interface LogDao {
 
   @Query("delete from $TABLE_LOGS")
   suspend fun removeLogs()
+
+  @Insert(onConflict = OnConflictStrategy.REPLACE)
+  suspend fun addLog(log: LoggingEntity)
 }
