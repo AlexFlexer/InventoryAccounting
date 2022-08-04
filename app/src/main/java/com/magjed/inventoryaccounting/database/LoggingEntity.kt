@@ -38,14 +38,15 @@ enum class ModificationType {
  * @author Alexander Dyachenko
  */
 @Keep
+@Entity(tableName = TABLE_LOGS)
 data class LoggingEntity(
   val time: String,
   val type: ModificationType,
-  @Embedded val oldProduct: ProductEntity?,
-  @Embedded val newProduct: ProductEntity?
+  @Embedded(prefix = "t1") val oldProduct: ProductEntity?,
+  @Embedded(prefix = "t2") val newProduct: ProductEntity?
 ) {
   @PrimaryKey(autoGenerate = true)
-  val id: Int = 0
+  var id: Int = 0
 }
 
 /**
