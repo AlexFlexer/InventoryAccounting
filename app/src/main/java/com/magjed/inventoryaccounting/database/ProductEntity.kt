@@ -36,7 +36,7 @@ data class ProductEntity(
 interface ProductsDao {
 
   @Query("select * from $TABLE_HW_ITEMS")
-  suspend fun getProducts(): Flow<List<ProductEntity>>
+  suspend fun getProducts(): List<ProductEntity>
 
   @Query(
     "select * from $TABLE_HW_ITEMS where (id = :id or :id is null) and" +
@@ -53,7 +53,7 @@ interface ProductsDao {
     manufacturer: String?,
     location: String?,
     amount: Int?
-  ): Flow<List<ProductEntity>>
+  ): List<ProductEntity>
 
   @Insert(onConflict = OnConflictStrategy.REPLACE)
   suspend fun addProduct(product: ProductEntity)
