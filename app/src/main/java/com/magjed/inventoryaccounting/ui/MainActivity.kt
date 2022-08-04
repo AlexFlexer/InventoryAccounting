@@ -206,8 +206,9 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
   }
 
   private fun startItemInfoDialog(item: ProductEntity?) {
-    ItemInfoDialog().apply { arguments = createBundleAndPut(ItemInfoDialog::mItem to item) }
-      .show(supportFragmentManager, TAG)
+    ItemInfoDialog().apply {
+      if (item != null) arguments = createBundleAndPut(ItemInfoDialog::mItem to item)
+    }.show(supportFragmentManager, TAG)
   }
 
   private fun startScanner() {
