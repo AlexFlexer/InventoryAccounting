@@ -1,5 +1,6 @@
 package com.magjed.inventoryaccounting.ui
 
+import android.content.DialogInterface
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -47,5 +48,15 @@ class ItemInfoDialog : BottomSheetDialogFragment() {
       mBinding.inputLocation.getContent(),
       mBinding.inputAmount.getContent().toIntOrNull() ?: 0
     )
+  }
+
+  override fun onCancel(dialog: DialogInterface) {
+    super.onCancel(dialog)
+    mViewModel.forgetScannedItem()
+  }
+
+  override fun onDismiss(dialog: DialogInterface) {
+    super.onDismiss(dialog)
+    mViewModel.forgetScannedItem()
   }
 }
