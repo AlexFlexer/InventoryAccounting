@@ -4,6 +4,7 @@ import androidx.annotation.Keep
 import androidx.room.*
 import com.magjed.inventoryaccounting.TABLE_HW_ITEMS
 import kotlinx.coroutines.flow.Flow
+import java.io.Serializable
 
 /**
  * Represents a computer hardware item.
@@ -25,7 +26,7 @@ data class ProductEntity(
   val manufacturer: String,
   val location: String,
   val amount: Int
-)
+): Serializable
 
 /**
  * DAO for interacting with hardware items table.
