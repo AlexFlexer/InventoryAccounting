@@ -194,7 +194,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
       mBinding.btnFilter.setImageResource(imgRes)
     }
     mViewModel.mScannedItem.observe(this) { item ->
-      startItemInfoDialog(item)
+      startItemInfoDialog(item ?: return@observe)
     }
     mViewModel.mItems.observe(this) {
       mAdapter.submitList(it.orEmpty())
