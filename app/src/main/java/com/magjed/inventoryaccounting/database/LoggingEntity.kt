@@ -57,7 +57,7 @@ data class LoggingEntity(
 @Dao
 interface LogDao {
 
-  @Query("select * from $TABLE_LOGS")
+  @Query("select * from $TABLE_LOGS order by time desc")
   fun getAllLogs(): Flow<List<LoggingEntity>>
 
   @Query("delete from $TABLE_LOGS")
