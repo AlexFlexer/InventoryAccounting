@@ -33,14 +33,14 @@ inline fun <reified D : RoomDatabase> Context.getOrCreateDatabase(
  * Shows the given [textRes] as toast message.
  */
 fun Activity.toast(@StringRes textRes: Int) {
-  Toast.makeText(this, textRes, Toast.LENGTH_LONG)
+  Toast.makeText(this, textRes, Toast.LENGTH_LONG).show()
 }
 
 /**
  * Shows the given [text] as toast message.
  */
 fun Activity.toast(text: CharSequence) {
-  Toast.makeText(this, text, Toast.LENGTH_LONG)
+  Toast.makeText(this, text, Toast.LENGTH_LONG).show()
 }
 
 /**
