@@ -2,6 +2,8 @@ package com.magjed.inventoryaccounting.utils
 
 import android.app.Activity
 import android.content.Context
+import android.content.res.Resources
+import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.EditText
@@ -65,3 +67,29 @@ val View.layoutInflater: LayoutInflater
 fun EditText.getContent(): String {
   return this.editableText.toString()
 }
+
+/**
+ * Converts pixels to density-independent pixels.
+ */
+fun Int.toDp(context: Context): Int =
+  TypedValue.applyDimension(
+    TypedValue.COMPLEX_UNIT_DIP,
+    this.toFloat(),
+    context.resources.displayMetrics
+  ).toInt()
+
+/**
+ * Converts text size to scaled pixels.
+ */
+fun Int.toSp(context: Context): Float =
+  TypedValue.applyDimension(
+    TypedValue.COMPLEX_UNIT_SP,
+    this.toFloat(),
+    context.resources.displayMetrics
+  )
+
+/**
+ * Converts density-independent pixels to pixels.
+ */
+val Int.toPx: Int
+  get() = (this * Resources.getSystem().displayMetrics.density).toInt()
