@@ -40,7 +40,8 @@ class MainItemsDiffCallback : ItemCallback<ProductEntity>() {
 
 class MainItemsAdapter(
   private val mOnQrClicked: (item: ProductEntity) -> Unit,
-  private val mOnRemoveClicked: (item: ProductEntity) -> Unit
+  private val mOnRemoveClicked: (item: ProductEntity) -> Unit,
+  private val mOnItemClicked: (item: ProductEntity) -> Unit
 ) : ListAdapter<ProductEntity, MainItemsAdapter.MainItemHolder>(MainItemsDiffCallback()) {
   class MainItemHolder(val binding: ItemProductBinding) : RecyclerView.ViewHolder(binding.root)
 
@@ -53,6 +54,7 @@ class MainItemsAdapter(
   override fun onBindViewHolder(holder: MainItemHolder, position: Int) {
     val item = getItem(position)
     holder.binding.btnQr.setOnClickListener { mOnQrClicked(item) }
+    holder.binding.root.setOnClickListener { mOnItemClicked(item) }
     holder.binding.btnRemove.setOnClickListener { mOnRemoveClicked(item) }
     holder.binding.txtNameModel.text = item.type + item.model
     holder.binding.txtManufacturer.text = item.manufacturer
@@ -167,7 +169,8 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
   private val mAdapter by autoDestroyLifecycleComponent({
     MainItemsAdapter(
       mOnQrClicked = { startQrGeneration(it) },
-      mOnRemoveClicked = { mViewModel.removeItem(it.id) }
+      mOnRemoveClicked = { mViewModel.removeItem(it.id) },
+      mOnItemClicked = { startItemInfoDialog(it) }
     )
   })
 
