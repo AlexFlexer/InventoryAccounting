@@ -52,7 +52,7 @@ class ItemQrGenViewModel(private val mGson: Gson) : ViewModel() {
 class ItemQRGeneratorDialog : BottomSheetDialogFragment() {
 
   private val mBinding: DialogQrGeneratorBinding by viewBinding(CreateMethod.INFLATE)
-  private val mItem: ProductEntity by argument()
+  val mItem: ProductEntity by argument()
   private val mViewModel: ItemQrGenViewModel by viewModel()
 
   override fun onCreateView(
