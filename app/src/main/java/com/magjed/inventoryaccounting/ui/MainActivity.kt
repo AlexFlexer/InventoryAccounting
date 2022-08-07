@@ -56,7 +56,7 @@ class MainItemsAdapter(
     holder.binding.btnQr.setOnClickListener { mOnQrClicked(item) }
     holder.binding.root.setOnClickListener { mOnItemClicked(item) }
     holder.binding.btnRemove.setOnClickListener { mOnRemoveClicked(item) }
-    holder.binding.txtNameModel.text = item.type + item.model
+    holder.binding.txtNameModel.text = item.type + " " + item.model
     holder.binding.txtManufacturer.text = item.manufacturer
     holder.binding.txtAmount.text = item.amount.toString()
   }
