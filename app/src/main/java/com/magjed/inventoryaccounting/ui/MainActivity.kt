@@ -108,14 +108,15 @@ class MainViewModel(
     }
   }
 
-  fun addItem(item: ProductEntity) {
+  fun addItem(item: ProductEntity, oldProduct: ProductEntity?) {
     viewModelScope.launch {
+      // preventing autoincrement of ID of the edited element
       mProductsDao.addProduct(item)
       mLogDao.addLog(
         LoggingEntity(
           LocalDateTime.now().toString(),
-          ModificationType.ADDED,
-          null,
+          if (oldProduct == null) ModificationType.ADDED else ModificationType.CHANGED,
+          oldProduct,
           item
         )
       )

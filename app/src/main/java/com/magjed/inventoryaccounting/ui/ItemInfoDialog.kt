@@ -35,7 +35,7 @@ class ItemInfoDialog : BottomSheetDialogFragment() {
     mBinding.inputType.setText(mItem?.type)
     mBinding.inputAmount.setText(mItem?.amount?.toString())
     mBinding.inputLocation.setText(mItem?.location)
-    mBinding.btnSave.setOnClickListener { mViewModel.addItem(collectItemInfo()); dismiss() }
+    mBinding.btnSave.setOnClickListener { mViewModel.addItem(collectItemInfo(), mItem); dismiss() }
     mBinding.btnDelete.setOnClickListener { mViewModel.removeItem(mItem?.id ?: 0); dismiss() }
   }
 
@@ -46,7 +46,7 @@ class ItemInfoDialog : BottomSheetDialogFragment() {
       mBinding.inputManufacturer.getContent(),
       mBinding.inputLocation.getContent(),
       mBinding.inputAmount.getContent().toIntOrNull() ?: 0
-    )
+    ).apply { id = mItem?.id ?: 0 }
   }
 
   override fun onCancel(dialog: DialogInterface) {
