@@ -166,7 +166,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
   private lateinit var mScannerResultHandle: ActivityResultLauncher<Intent>
   private val mAdapter by autoDestroyLifecycleComponent({
     MainItemsAdapter(
-      mOnQrClicked = { startScanner() },
+      mOnQrClicked = { startQrGeneration(it) },
       mOnRemoveClicked = { mViewModel.removeItem(it.id) }
     )
   })
@@ -215,6 +215,12 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
   private fun startScanner() {
     mScannerResultHandle.launch(Intent(this, ScannerActivity::class.java))
+  }
+
+  private fun startQrGeneration(item: ProductEntity) {
+    ItemQRGeneratorDialog().apply {
+      arguments = createBundleAndPut(ItemQRGeneratorDialog::mItem to item)
+    }.show(supportFragmentManager, TAG)
   }
 
   private fun deserializeItem(scannedText: String?) {
