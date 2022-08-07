@@ -19,4 +19,12 @@
   <string name="button_save">Сохранить</string>
   <string name="button_delete">Удалить</string>
   <string name="button_filter">Фильтровать</string>
+
+  <string name="alert_error">Ошибка</string>
+  <string name="alert_ok">OK</string>
+  <string name="alert_attention">Внимание!</string>
+  <string name="alert_cancel">Отмена</string>
+  <string name="no_app_for_action">Не найдено приложения для выполнения данного действия</string>
+  <string name="no_app_for_settings">Невозможно открыть настройки приложения</string>
+  <string name="profile_premium_manage_no_access">Похоже, у Вас не установлен Google Play. Чтобы управлять подпиской, установите его.</string>
 </resources>
