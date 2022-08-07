@@ -82,7 +82,7 @@ class MainViewModel(
       null
     }
     if (item == null)
-      item = _mItems.value?.firstOrNull { it.id == itemStr }
+      item = _mItems.value?.firstOrNull { it.id == (itemStr.toIntOrNull() ?: 0) }
     _mScannedItem.value = item
   }
 
@@ -92,7 +92,7 @@ class MainViewModel(
     }
   }
 
-  fun removeItem(id: String) {
+  fun removeItem(id: Int) {
     viewModelScope.launch {
       val product = _mItems.value?.firstOrNull { it.id == id }
       mProductsDao.removeProduct(id)
@@ -124,7 +124,6 @@ class MainViewModel(
   }
 
   fun filter(
-    id: String?,
     type: String?,
     model: String?,
     manufacturer: String?,
@@ -133,7 +132,7 @@ class MainViewModel(
   ) {
     _mFiltered.value = true
     viewModelScope.launch {
-      _mItems.value = mProductsDao.filter(id, type, model, manufacturer, location, amount)
+      _mItems.value = mProductsDao.filter(type, model, manufacturer, location, amount)
     }
   }
 

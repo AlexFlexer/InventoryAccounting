@@ -3,13 +3,11 @@ package com.magjed.inventoryaccounting.database
 import androidx.annotation.Keep
 import androidx.room.*
 import com.magjed.inventoryaccounting.TABLE_HW_ITEMS
-import kotlinx.coroutines.flow.Flow
 import java.io.Serializable
 
 /**
  * Represents a computer hardware item.
  *
- * @param id is a string ID of the item. Used as primary key for the database.
  * @param type is a type of the hardware, i.e. monitor, power supply, mouse etc.
  * @param model is a specific model name.
  * @param location is where the item can be found. May be a cabinet, warehouse and so on.
@@ -20,13 +18,15 @@ import java.io.Serializable
 @Entity(tableName = TABLE_HW_ITEMS)
 @Keep
 data class ProductEntity(
-  @PrimaryKey val id: String,
   val type: String,
   val model: String,
   val manufacturer: String,
   val location: String,
   val amount: Int
-): Serializable
+) : Serializable {
+  @PrimaryKey(autoGenerate = true)
+  var id: Int = 0
+}
 
 /**
  * DAO for interacting with hardware items table.
@@ -36,19 +36,18 @@ data class ProductEntity(
 @Dao
 interface ProductsDao {
 
-  @Query("select * from $TABLE_HW_ITEMS")
+  @Query("select * from $TABLE_HW_ITEMS order by id desc")
   suspend fun getProducts(): List<ProductEntity>
 
   @Query(
-    "select * from $TABLE_HW_ITEMS where (id = :id or :id is null) and" +
+    "select * from $TABLE_HW_ITEMS where " +
       "(type = :type or :type is null) and" +
       "(model = :model or :model is null) and" +
       "(manufacturer = :manufacturer or :manufacturer is null) and" +
       "(location = :location or :location is null) and" +
-      "(amount = :amount or :amount is null)"
+      "(amount = :amount or :amount is null) order by id desc"
   )
   suspend fun filter(
-    id: String?,
     type: String?,
     model: String?,
     manufacturer: String?,
@@ -63,5 +62,5 @@ interface ProductsDao {
   suspend fun removeProduct(product: ProductEntity)
 
   @Query("delete from $TABLE_HW_ITEMS where id = :id")
-  suspend fun removeProduct(id: String)
+  suspend fun removeProduct(id: Int)
 }

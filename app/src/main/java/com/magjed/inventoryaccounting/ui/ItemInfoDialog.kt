@@ -30,19 +30,17 @@ class ItemInfoDialog : BottomSheetDialogFragment() {
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
-    mBinding.inputId.setText(mItem?.id)
     mBinding.inputManufacturer.setText(mItem?.manufacturer)
     mBinding.inputModel.setText(mItem?.model)
     mBinding.inputType.setText(mItem?.type)
     mBinding.inputAmount.setText(mItem?.amount?.toString())
     mBinding.inputLocation.setText(mItem?.location)
     mBinding.btnSave.setOnClickListener { mViewModel.addItem(collectItemInfo()); dismiss() }
-    mBinding.btnDelete.setOnClickListener { mViewModel.removeItem(mItem?.id ?: "0"); dismiss() }
+    mBinding.btnDelete.setOnClickListener { mViewModel.removeItem(mItem?.id ?: 0); dismiss() }
   }
 
   private fun collectItemInfo(): ProductEntity {
     return ProductEntity(
-      mBinding.inputId.getContent(),
       mBinding.inputType.getContent(),
       mBinding.inputModel.getContent(),
       mBinding.inputManufacturer.getContent(),

@@ -28,7 +28,6 @@ class FilterDialog : BottomSheetDialogFragment() {
     super.onViewCreated(view, savedInstanceState)
     mBinding.btnApplyFilter.setOnClickListener {
       mViewModel.filter(
-        getTextOf(mBinding.inputId),
         getTextOf(mBinding.inputType),
         getTextOf(mBinding.inputModel),
         getTextOf(mBinding.inputManufacturer),
