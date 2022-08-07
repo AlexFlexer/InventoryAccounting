@@ -44,7 +44,10 @@ class ScannerActivity : AppCompatActivity(R.layout.activity_scanner) {
     mCodeScanner.isAutoFocusEnabled = true // Whether to enable auto focus or not
     mCodeScanner.isFlashEnabled = false // Whether to enable flash or not
     mCodeScanner.decodeCallback = DecodeCallback { decodedText ->
-      runOnUiThread { setResult(RESULT_OK, MainActivity.packResult(decodedText.text)) }
+      runOnUiThread {
+        setResult(RESULT_OK, MainActivity.packResult(decodedText.text))
+        finish()
+      }
     }
     mCodeScanner.errorCallback = ErrorCallback { // or ErrorCallback.SUPPRESS
       runOnUiThread {
@@ -52,6 +55,7 @@ class ScannerActivity : AppCompatActivity(R.layout.activity_scanner) {
           this, "Camera initialization error: ${it.message}",
           Toast.LENGTH_LONG
         ).show()
+        finish()
       }
     }
   }
