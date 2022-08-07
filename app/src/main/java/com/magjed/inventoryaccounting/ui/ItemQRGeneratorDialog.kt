@@ -12,6 +12,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import by.kirich1409.viewbindingdelegate.CreateMethod
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.gson.Gson
@@ -50,7 +51,7 @@ class ItemQrGenViewModel(private val mGson: Gson) : ViewModel() {
 
 class ItemQRGeneratorDialog : BottomSheetDialogFragment() {
 
-  private val mBinding: DialogQrGeneratorBinding by viewBinding()
+  private val mBinding: DialogQrGeneratorBinding by viewBinding(CreateMethod.INFLATE)
   private val mItem: ProductEntity by argument()
   private val mViewModel: ItemQrGenViewModel by viewModel()
 

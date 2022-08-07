@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
+import by.kirich1409.viewbindingdelegate.CreateMethod
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.magjed.inventoryaccounting.databinding.DialogFilterBinding
@@ -12,7 +13,7 @@ import com.magjed.inventoryaccounting.utils.getContent
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class FilterDialog : BottomSheetDialogFragment() {
-  private val mBinding: DialogFilterBinding by viewBinding()
+  private val mBinding: DialogFilterBinding by viewBinding(CreateMethod.INFLATE)
   private val mViewModel: MainViewModel by sharedViewModel()
 
   override fun onCreateView(

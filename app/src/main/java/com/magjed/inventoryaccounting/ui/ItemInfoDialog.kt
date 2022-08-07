@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import by.kirich1409.viewbindingdelegate.CreateMethod
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.magjed.inventoryaccounting.database.ProductEntity
@@ -16,7 +17,7 @@ import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 class ItemInfoDialog : BottomSheetDialogFragment() {
 
   val mItem: ProductEntity? by argumentNullable()
-  private val mBinding: DialogItemInfoBinding by viewBinding()
+  private val mBinding: DialogItemInfoBinding by viewBinding(CreateMethod.INFLATE)
   private val mViewModel: MainViewModel by sharedViewModel()
 
   override fun onCreateView(
