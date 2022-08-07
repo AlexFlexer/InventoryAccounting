@@ -20,6 +20,8 @@
   <string name="button_delete">Удалить</string>
   <string name="button_filter">Фильтровать</string>
 
+  <string name="permission_denied_camera">Дайте доступ к камере в настройках</string>
+
   <string name="alert_error">Ошибка</string>
   <string name="alert_ok">OK</string>
   <string name="alert_attention">Внимание!</string>
