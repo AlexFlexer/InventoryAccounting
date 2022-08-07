@@ -6,6 +6,7 @@ import com.magjed.inventoryaccounting.database.LogsDatabase
 import com.magjed.inventoryaccounting.ui.ItemQrGenViewModel
 import com.magjed.inventoryaccounting.ui.MainViewModel
 import com.magjed.inventoryaccounting.utils.getOrCreateDatabase
+import org.koin.android.ext.koin.androidApplication
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
@@ -22,6 +23,6 @@ val moduleGson = module {
 }
 
 val moduleViewModels = module {
-  viewModel { ItemQrGenViewModel(get()) }
+  viewModel { ItemQrGenViewModel(get(), androidApplication()) }
   viewModel { MainViewModel(get(), get(), get()) }
 }

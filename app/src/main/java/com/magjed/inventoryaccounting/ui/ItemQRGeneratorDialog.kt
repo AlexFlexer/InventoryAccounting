@@ -1,5 +1,6 @@
 package com.magjed.inventoryaccounting.ui
 
+import android.app.Application
 import android.graphics.Bitmap
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,9 +9,9 @@ import android.view.ViewGroup
 import androidmads.library.qrgenearator.QRGContents
 import androidmads.library.qrgenearator.QRGEncoder
 import androidx.core.view.isVisible
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import by.kirich1409.viewbindingdelegate.CreateMethod
 import by.kirich1409.viewbindingdelegate.viewBinding
@@ -19,6 +20,7 @@ import com.google.gson.Gson
 import com.magjed.inventoryaccounting.database.ProductEntity
 import com.magjed.inventoryaccounting.databinding.DialogQrGeneratorBinding
 import com.magjed.inventoryaccounting.utils.argument
+import com.magjed.inventoryaccounting.utils.toDp
 import com.magjed.inventoryaccounting.utils.toast
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.suspendCancellableCoroutine
@@ -27,7 +29,10 @@ import kotlin.coroutines.resume
 
 data class BitmapResult(val mBitmap: Bitmap?, val errMsg: String?)
 
-class ItemQrGenViewModel(private val mGson: Gson) : ViewModel() {
+class ItemQrGenViewModel(
+  private val mGson: Gson,
+  application: Application
+) : AndroidViewModel(application) {
   private val _readyQr = MutableLiveData(BitmapResult(null, null))
   val readyQr: LiveData<BitmapResult> = _readyQr
 
@@ -37,7 +42,7 @@ class ItemQrGenViewModel(private val mGson: Gson) : ViewModel() {
       suspendCancellableCoroutine { continuation ->
         try {
           val prodJson = mGson.toJson(product)
-          val encoder = QRGEncoder(prodJson, QRGContents.Type.TEXT)
+          val encoder = QRGEncoder(prodJson, QRGContents.Type.TEXT, 150.toDp(getApplication()))
           _readyQr.value = BitmapResult(encoder.bitmap, null)
           continuation.resume(Unit)
         } catch (e: Exception) {
