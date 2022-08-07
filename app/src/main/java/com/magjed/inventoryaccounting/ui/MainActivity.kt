@@ -23,6 +23,7 @@ import com.magjed.inventoryaccounting.databinding.ItemProductBinding
 import com.magjed.inventoryaccounting.utils.autoDestroyLifecycleComponent
 import com.magjed.inventoryaccounting.utils.createBundleAndPut
 import com.magjed.inventoryaccounting.utils.layoutInflater
+import com.magjed.inventoryaccounting.utils.startActivity
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.time.LocalDateTime
@@ -181,7 +182,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
       else startFilterDialog()
     }
     mBinding.btnLogs.setOnClickListener {
-      startActivity(Intent(this, LogsActivity::class.java))
+      startActivity<LogsActivity>()
     }
     mBinding.btnCamera.setOnClickListener {
       startScanner()
@@ -199,6 +200,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
     mViewModel.mItems.observe(this) {
       mAdapter.submitList(it.orEmpty())
     }
+    mViewModel.loadItems()
   }
 
   private fun startFilterDialog() {
